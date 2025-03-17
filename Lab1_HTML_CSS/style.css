@@ -1,0 +1,230 @@
+/* Reset stylów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Trebuchet MS, sans-serif;
+    background-color: #f8f8f8;
+    font-size: 16px;
+}
+
+/* Nawigacja */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 2em;
+    align-items: center;
+    background: white;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-btn {
+    background: white;
+    padding: 10px 10px;
+    border: 1px solid black;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.login-btn {
+    background: black;
+    color: white;
+    padding: 10px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.icon-btn img {
+    width: 1.5em; 
+    height: auto;
+}
+
+/* Główna zawartość */
+.container {
+    display: flex;
+    margin: 1%;
+}
+
+/* Panel filtrów */
+.filters {
+    width: 15%;
+    background: white;
+    padding: 1%;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.filters h2 {
+    margin-bottom: 8px;
+    font-size: 1.5em;
+}
+
+.filters label {
+    font-weight: bold;
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 0.4em;
+    
+}
+
+.filters input, .filters select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.filter-btn {
+    width: 100%;
+    background: black;
+    color: white;
+    padding: 10px;
+    margin-top: 2em;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Katalog książek */
+.catalog {
+    flex: 1;
+    margin-left: 2%;
+}
+
+.books {
+    display: flex;
+    gap: 2%;
+    flex-wrap: wrap;
+    padding-top: 2em;
+    row-gap: 2em;
+}
+
+.book {
+    width: 30%;
+    background: white;
+    min-width: 400px;
+    max-width: 400px;
+    padding: 1em;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.book-image {
+    height: 25em;
+    background: #ddd;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.book-details .tag {
+    display: inline-block;
+    background: #eee;
+    padding: 5px;
+    margin-top: 5px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.add-to-cart {
+    background: black;
+    color: white;
+    padding: 10px;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Style pól formularza */
+label {
+    display: block;
+    font-weight: bold;
+    margin: 0.8em 0 0.3em;
+}
+
+input, select, textarea {
+    font-family: Trebuchet MS, sans-serif;
+    width: 100%;
+    padding: 0.8em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    background: white;
+}
+
+
+.form-container {
+    max-width: 600px;
+    background: white;
+    padding: 2em;
+    margin: 2em auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+/* Grupowanie pól (np. Cena + Rok wydania) */
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+.form-group div {
+    flex: 1;
+}
+
+/* Style dla przycisków */
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5em;
+}
+
+.cancel-btn {
+    background: white;
+    border: 1px solid black;
+    color: black;
+    padding: 0.8em 1.5em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn {
+    background: black;
+    color: white;
+    padding: 0.8em 1.5em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancel-btn:hover {
+    background: #f0f0f0;
+}
+
+.submit-btn:hover {
+    background: #333;
+}
+
+/* Stylizacja dla przycisku dodawania pliku */
+input[type="file"] {
+    border: none;
+    padding: 0.5em;
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Księgarnia Między Kartkami</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Nawigacja -->
+    <nav class="navbar">
+        <div class="logo">📖 Księgarnia Między Kartkami</div>
+        <div class="nav-actions">
+            <button class="icon-btn">
+                <img src="plus.png" alt="Dodaj" class="icon">
+            </button>
+            <button class="icon-btn">
+                <img src="cart.png" alt="Koszyk" class="icon">
+            </button>
+            <button class="login-btn">Zaloguj się</button>
+        </div>
+    </nav>
+
+    <!-- Główna zawartość -->
+    <div class="container">
+        <!-- Panel filtrów -->
+        <aside class="filters">
+            <h2>Filtry</h2>
+            
+            <label>Gatunek</label>
+            <select id="genre-filter">
+                <option value="">Wszystkie</option>
+                <option value="klasyka">Klasyka</option>
+                <option value="kryminal">Kryminał</option>
+                <option value="fantastyka">Fantastyka</option>
+                <option value="romans">Romans</option>
+                <option value="thriller">Thriller</option>
+                <option value="horror">Horror</option>
+                <option value="biografia">Biografia</option>
+                <option value="naukowa">Naukowa</option>
+                <option value="historia">Historia</option>
+                <option value="psychologia">Psychologia</option>
+                <option value="filozofia">Filozofia</option>
+                <option value="science-fiction">Science Fiction</option>
+                <option value="literatura-dziecieca">Literatura dziecięca</option>
+                <option value="poezja">Poezja</option>
+                <option value="przygodowa">Przygodowa</option>
+                <option value="sensacyjna">Sensacyjna</option>
+                <option value="reportaz">Reportaż</option>
+                <option value="samorozwoj">Samorozwój</option>
+                <option value="religijna">Religijna</option>
+                <option value="podroznicza">Podróżnicza</option>
+            </select>
+
+            <label>Cena</label>
+            <div class="price-filter">
+                <input type="number" placeholder="Od" min="0">
+                <input type="number" placeholder="Do" min="0">
+            </div>
+            
+            <label>Rodzaj</label>
+            <select>
+                <option>Wybierz rodzaj</option>
+                <option value="">Wszystkie</option>
+                <option value="audiobook">Audiobooki</option>
+                <option value="ebook">E-booki</option>
+                <option value="hard-cover">Okładka twarda</option>
+                <option value="soft-cover">Okładka miękka</option>
+            </select>
+
+            <label>Ilość stron</label>
+            <div class="pages-filter">
+                <input type="number" placeholder="Od" min="1" step="1">
+                <input type="number" placeholder="Do" min="1" step="1">
+            </div>
+
+            <label>Rok wydania</label>
+            <div class="year-filter">
+                <input type="number" id="year-min" placeholder="Od" min="0" >
+                <input type="number" id="year-max" placeholder="Do" min="0" >
+            </div>            
+
+            <label>Autor</label>
+            <input type="text" placeholder="Wpisz autora">
+
+            <label>Słowo w opisie</label>
+            <input type="text" placeholder="Wpisz słowo">
+
+            <div class="filter-group">
+                <label for="sort">Sortuj według:</label>
+                <select id="sort">
+                    <option value="price-asc">Cena (rosnąco)</option>
+                    <option value="price-desc">Cena (malejąco)</option>
+                    <option value="year-asc">Rok wydania (rosnąco)</option>
+                    <option value="year-desc">Rok wydania (malejąco)</option>
+                    <option value="title-asc">Tytuł (A-Z)</option>
+                    <option value="title-desc">Tytuł (Z-A)</option>
+                </select>
+            </div>
+
+            <button class="filter-btn">Zastosuj filtry</button>
+        </aside>
+
+        <!-- Katalog książek -->
+        <main class="catalog">
+            <h2>Katalog książek</h2>
+            <p>Przeglądaj naszą kolekcję wyjątkowych białych kruków</p>
+
+            <div class="books" id="book-list">
+                <div class="book" data-price="129.99" data-cover="twarda" data-genre="klasyka" data-author="Ernest Hemingway" data-year="1952">
+                    <img src="bookcover.jpg" class="book-image" alt="Stary człowiek i morze">
+                    <h3>Stary człowiek i morze</h3>
+                    <p>Ernest Hemingway</p>
+                    <div class="book-details">
+                        <span class="tag">Twarda okładka</span>
+                        <span class="tag">Klasyka</span>
+                        <span class="tag">1952 rok</span>
+                    </div>
+                    <p>129.99 zł</p>
+                    <button class="add-to-cart">Dodaj do koszyka</button>
+                </div>
+            
+                <div class="book" data-price="149.99" data-cover="twarda" data-genre="kryminal" data-author="Fiodor Dostojewski" data-year="1866">
+                    <img src="bookcover.jpg" class="book-image" alt="Zbrodnia i kara">
+                    <h3>Zbrodnia i kara</h3>
+                    <p>Fiodor Dostojewski</p>
+                    <div class="book-details">
+                        <span class="tag">Twarda okładka</span>
+                        <span class="tag">Kryminał</span>
+                        <span class="tag">1866 rok</span>
+                    </div>
+                    <p>149.99 zł</p>
+                    <button class="add-to-cart">Dodaj do koszyka</button>
+                </div>
+            
+                <div class="book" data-price="89.99" data-cover="miękka" data-genre="romans" data-author="Jane Austen" data-year="1813">
+                    <img src="bookcover.jpg" class="book-image" alt="Duma i uprzedzenie">
+                    <h3>Duma i uprzedzenie</h3>
+                    <p>Jane Austen</p>
+                    <div class="book-details">
+                        <span class="tag">Miękka okładka</span>
+                        <span class="tag">Romans</span>
+                        <span class="tag">1813 rok</span>
+                    </div>
+                    <p>89.99 zł</p>
+                    <button class="add-to-cart">Dodaj do koszyka</button>
+                </div>
+                <div class="book" data-price="59.99" data-cover="twarda" data-genre="fantastyka" data-author="J.R.R. Tolkien" data-year="1954">
+                    <img src="bookcover.jpg" class="book-image" alt="Władca Pierścieni">
+                    <h3>Władca Pierścieni</h3>
+                    <p>J.R.R. Tolkien</p>
+                    <div class="book-details">
+                        <span class="tag">Twarda okładka</span>
+                        <span class="tag">Fantastyka</span>
+                        <span class="tag">1954 rok</span>
+                    </div>
+                    <p>59.99 zł</p>
+                    <button class="add-to-cart">Dodaj do koszyka</button>
+                </div>
+                <div class="book" data-price="99.99" data-cover="twarda" data-genre="kryminal" data-author="Agatha Christie" data-year="1934">
+                    <img src="bookcover.jpg" class="book-image" alt="Morderstwo w Orient Expressie">
+                    <h3>Morderstwo w Orient Expressie</h3>
+                    <p>Agatha Christie</p>
+                    <div class="book-details">
+                        <span class="tag">Audiobook</span>
+                        <span class="tag">Kryminał</span>
+                        <span class="tag">1934 rok</span>
+                    </div>
+                    <p>99.99 zł</p>
+                    <button class="add-to-cart">Dodaj do koszyka</button>
+                </div>
+            </div> 
+        </main>
+    </div>
+</body>
+</html>
