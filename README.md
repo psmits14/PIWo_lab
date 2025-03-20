@@ -1,11 +1,11 @@
 # Programowanie Interfejsów Webowych
 Zajęcia laboratoryjne z przedmiotu Programowanie Interfejsów Webowych, Politechnika Wrocławska.
 
-##Opis projektu
+## Opis projektu
 
 "Księgarnia Między Kartkami" to internetowa księgarnia umożliwiająca przeglądanie oraz zakup różnego rodzaju książek. Użytkownicy mogą filtrować dostępne pozycje według gatunku, ceny, roku wydania, rodzaju okładki oraz liczby stron. Aplikacja posiada również funkcjonalność dodawania nowych książek.
 
-##Laboratorium 1 - HTML, CSS
+## Laboratorium 1 - HTML, CSS
 W ramach pierwszego laboratorium utworzono:
 - Stronę główną (index.html) zawierającą katalog książek
 - Stronę formularza dodawania nowych książek (index2.html)
