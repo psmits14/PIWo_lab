@@ -15,6 +15,7 @@ W ramach pierwszego laboratorium utworzono:
 
 ## Laboratorium 2 — JavaScript
 W ramach laboratorium przygotowano prostą aplikację To-Do do zarządzania zadaniami, napisaną w czystym HTML, CSS i JavaScript.
+
 ✨ Funkcjonalności aplikacji:
 - Dodawanie zadań do wybranej listy
 - Oznaczanie zadań jako wykonane (z przekreśleniem i datą)
