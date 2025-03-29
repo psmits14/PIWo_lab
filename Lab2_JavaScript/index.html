@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do list</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!-- Do dodatkowych ikonek np. <i class="fas fa-undo">, ikonki krzyżyków, rozwijania itd-->
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="icon.png" alt="Ikona strony" class="icon">
+            <h1>ToDo List</h1>
+        </div>
+        
+        <!-- Wyszukiwanie -->
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Wyszukaj zadanie...">
+            <div class="case-sensitive">
+                <input type="checkbox" id="caseInsensitive" checked>
+                <label for="caseInsensitive">Uwzględnij wielkość liter</label>
+            </div>
+        </div>
+
+        <!-- Doddawanie nowej listy -->
+        <div class="add-list-container">
+            <input type="text" id="newListInput" placeholder="Nazwa nowej listy...">
+            <button id="addListBtn">Dodaj listę</button>
+        </div>
+
+        <!-- Dodawanie tasków -->
+        <div class="add-task-container">
+            <input type="text" id="newTaskInput" placeholder="Nazwa nowego zadania...">
+            <select id="listSelector">
+                <option value="urgent">Pilne</option>
+                <option value="regular">Zwykłe</option>
+            </select>
+            <button id="addTaskBtn">Dodaj zadanie</button>
+        </div>
+        
+        <div class="header">
+            <h2>Twoje listy zadań</h2>
+        </div>
+
+
+        <!-- Cofanie usuwania -->
+        <div class="undo-container">
+            <p>Kliknij na zadanie, aby oznaczyć je jako wykonane. Żby usunąć zadanie, klkknij czerwony krzyżyk.</p>
+            <button id="undoBtn" disabled>Cofnij usunięcie <i class="fas fa-undo"></i></button>
+        </div>
+
+
+        <!-- Wypisanie list -->
+        <div id="listsContainer">
+            <div class="list-wrapper" data-list="urgent">
+                <div class="list-header">
+                    <h2>Pilne <i class="fas fa-chevron-down"></i></h2>
+                </div>
+                <ul class="task-list" id="urgentList"></ul>
+            </div>
+
+            <div class="list-wrapper" data-list="regular">
+                <div class="list-header">
+                    <h2>Zwykłe <i class="fas fa-chevron-down"></i></h2>
+                </div>
+                <ul class="task-list" id="regularList"></ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal potwierdzenia usuwania -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <h3>Potwierdź usunięcie</h3>
+            <p id="modalText">Czy na pewno chcesz usunąć zadanie o treści: ?</p>
+            <div class="modal-buttons">
+                <button id="confirmDelete">Tak, usuń</button>
+                <button id="cancelDelete">Anuluj</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
