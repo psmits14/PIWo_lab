@@ -67,19 +67,17 @@ W ramach trzeciego laboratorium przeprowadzono migrację projektu "Księgarnia M
 
 ### Funkcjonalności aplikacji:
 
-- **Przeglądanie katalogu książek** - wyświetlanie listy dostępnych książek z podstawowymi informacjami
-- **Zaawansowane filtrowanie** - możliwość filtrowania książek według:
-
-- Gatunku literackiego
-- Zakresu cenowego
-- Rodzaju okładki (twarda, miękka, e-book, audiobook)
-- Liczby stron
-- Roku wydania
-- Autora
-- Słów kluczowych w opisie
-
-- **Sortowanie wyników** - możliwość sortowania książek według ceny, roku wydania i tytułu
-- **Dodawanie nowych książek** - formularz umożliwiający dodanie nowej pozycji do katalogu
+- Przeglądanie katalogu książek - wyświetlanie listy dostępnych książek z podstawowymi informacjami
+- Zaawansowane filtrowanie - możliwość filtrowania książek według:
+  - Gatunku literackiego
+  - Zakresu cenowego
+  - Rodzaju okładki (twarda, miękka, e-book, audiobook)
+  - Liczby stron
+  - Roku wydania
+  - Autora
+  - Słów kluczowych w opisie
+- Sortowanie wyników - możliwość sortowania książek według ceny, roku wydania i tytułu
+- Dodawanie nowych książek - formularz umożliwiający dodanie nowej pozycji do katalogu
 
 ### Uruchomienie projektu
 
