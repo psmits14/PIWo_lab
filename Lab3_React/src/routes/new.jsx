@@ -1,19 +1,12 @@
 "use client"
 
-import { useState } from "react"
-import { useNavigate } from "react-router"
-import { useBookstore } from "../Contexts/BookstoreContext"
-
-export function meta() {
-  return [
-    { title: "Dodaj nową książkę - Księgarnia Między Kartkami" },
-    { name: "description", content: "Formularz dodawania nowej książki do księgarni." },
-  ]
-}
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import { auth } from "../Services/init";
+import { addBook } from "../Services/BookService";
 
 export default function NewBook() {
-  const navigate = useNavigate()
-  const { books, setBooks } = useBookstore()
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
     author: "",
@@ -23,23 +16,24 @@ export default function NewBook() {
     cover: "",
     pages: "",
     genre: "",
-    image: "/images/bookcover.jpg", // Default image
-  })
+    image: "/bookcover.jpg",
+  });
 
   const handleChange = (e) => {
-    const { id, value } = e.target
-    setFormData({
-      ...formData,
-      [id]: value,
-    })
-  }
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    // Create a new book object
+    const user = auth.currentUser;
+    if (!user) {
+      alert("Zaloguj się, aby dodać książkę");
+      return;
+    }
+
     const newBook = {
-      id: books.length + 1,
       title: formData.title,
       author: formData.author,
       description: formData.description,
@@ -49,36 +43,25 @@ export default function NewBook() {
       pages: Number.parseInt(formData.pages) || 0,
       genre: getGenreDisplayName(formData.genre),
       image: formData.image,
-    }
+    };
 
-    // Add the new book to the books array
-    setBooks([...books, newBook])
+    await addBook(newBook, user.uid);
+    alert("Książka dodana!");
+    navigate("/");
+  };
 
-    // Navigate back to the home page
-    navigate("/")
-  }
+  const handleCancel = () => navigate("/");
 
-  const handleCancel = () => {
-    navigate("/")
-  }
-
-  // Helper function to convert cover value to display name
   const getCoverDisplayName = (coverValue) => {
-    switch (coverValue) {
-      case "audiobook":
-        return "Audiobook"
-      case "ebook":
-        return "E-book"
-      case "hard-cover":
-        return "Twarda okładka"
-      case "soft-cover":
-        return "Miękka okładka"
-      default:
-        return coverValue
-    }
-  }
+    const map = {
+      audiobook: "Audiobook",
+      ebook: "E-book",
+      "hard-cover": "Twarda okładka",
+      "soft-cover": "Miękka okładka",
+    };
+    return map[coverValue] || coverValue;
+  };
 
-  // Helper function to convert genre value to display name
   const getGenreDisplayName = (genreValue) => {
     const genreMap = {
       klasyka: "Klasyka",
@@ -101,10 +84,9 @@ export default function NewBook() {
       samorozwoj: "Samorozwój",
       religijna: "Religijna",
       podroznicza: "Podróżnicza",
-    }
-
-    return genreMap[genreValue] || genreValue
-  }
+    };
+    return genreMap[genreValue] || genreValue;
+  };
 
   return (
     <div className="form-container">
