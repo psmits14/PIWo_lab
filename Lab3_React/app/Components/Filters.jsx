@@ -1,48 +1,36 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { useBookstore } from "../Contexts/BookstoreContext";
-import { auth } from "../Services/init";
-import { getAllBooks, getUserBooks } from "../Services/BookService";
+import { useBookstore } from "../Contexts/BookstoreContext"
 
 export default function Filters() {
-  const { filters, setFilters, applyFilters, setBooks } = useBookstore();
-  const [showMine, setShowMine] = useState(false);
+  const { filters, setFilters, applyFilters, userOnly, setUserOnly, user } = useBookstore()
 
-  const toggleMine = async () => {
-    const user = auth.currentUser;
-    const books = showMine || !user
-      ? await getAllBooks()
-      : await getUserBooks(user.uid);
-
-    setBooks(books);
-    setShowMine(prev => !prev);
-  };
-
+  // Obsługa zmian w polach formularza
   const handleChange = (e) => {
-    const { id, value } = e.target;
-    const filterKey = id.replace("-filter", "").replace("-min", "Min").replace("-max", "Max");
+    const { id, value } = e.target
+
+    // Przekształć identyfikator pola na właściwość filtra
+    const filterKey = id.replace("-filter", "").replace("-min", "Min").replace("-max", "Max")
 
     setFilters((prev) => ({
       ...prev,
       [filterKey]: value,
-    }));
-  };
+    }))
+  }
 
+  // Obsługa wysłania formularza
   const handleSubmit = (e) => {
-    e.preventDefault();
-    applyFilters();
-  };
+    e.preventDefault()
+    applyFilters()
+  }
+
+  const toggleUserOnly = () => {
+    setUserOnly((prev) => !prev)
+  }
 
   return (
     <aside className="filters">
       <h2>Filtry</h2>
-
-      {/* Przycisk MOJE */}
-      <button onClick={toggleMine} className="filter-toggle">
-        {showMine ? "Wszystkie książki" : "MOJE"}
-      </button>
-
       <form onSubmit={handleSubmit}>
         {/* Gatunek */}
         <label htmlFor="genre-filter">Gatunek</label>
@@ -73,8 +61,22 @@ export default function Filters() {
         {/* Cena */}
         <label>Cena</label>
         <div className="price-filter">
-          <input type="number" id="price-min" placeholder="Od" min="0" value={filters.priceMin} onChange={handleChange} />
-          <input type="number" id="price-max" placeholder="Do" min="0" value={filters.priceMax} onChange={handleChange} />
+          <input
+            type="number"
+            id="price-min"
+            placeholder="Od"
+            min="0"
+            value={filters.priceMin}
+            onChange={handleChange}
+          />
+          <input
+            type="number"
+            id="price-max"
+            placeholder="Do"
+            min="0"
+            value={filters.priceMax}
+            onChange={handleChange}
+          />
         </div>
 
         {/* Rodzaj okładki */}
@@ -83,31 +85,73 @@ export default function Filters() {
           <option value="">Wszystkie</option>
           <option value="Audiobook">Audiobooki</option>
           <option value="E-book">E-booki</option>
-          <option value="Twarda okładka">Okładka twarda</option>
-          <option value="Miękka okładka">Okładka miękka</option>
+          <option value="Twarda">Okładka twarda</option>
+          <option value="Miękka">Okładka miękka</option>
         </select>
 
         {/* Liczba stron */}
         <label>Ilość stron</label>
         <div className="pages-filter">
-          <input type="number" id="pages-min" placeholder="Od" min="1" step="1" value={filters.pagesMin} onChange={handleChange} />
-          <input type="number" id="pages-max" placeholder="Do" min="1" step="1" value={filters.pagesMax} onChange={handleChange} />
+          <input
+            type="number"
+            id="pages-min"
+            placeholder="Od"
+            min="1"
+            step="1"
+            value={filters.pagesMin}
+            onChange={handleChange}
+          />
+          <input
+            type="number"
+            id="pages-max"
+            placeholder="Do"
+            min="1"
+            step="1"
+            value={filters.pagesMax}
+            onChange={handleChange}
+          />
         </div>
 
         {/* Rok wydania */}
         <label>Rok wydania</label>
         <div className="year-filter">
-          <input type="number" id="year-min" placeholder="Od" min="0" value={filters.yearMin} onChange={handleChange} />
-          <input type="number" id="year-max" placeholder="Do" min="0" value={filters.yearMax} onChange={handleChange} />
+          <input
+            type="number"
+            id="year-min"
+            placeholder="Od"
+            min="0"
+            value={filters.yearMin}
+            onChange={handleChange}
+          />
+          <input
+            type="number"
+            id="year-max"
+            placeholder="Do"
+            min="0"
+            value={filters.yearMax}
+            onChange={handleChange}
+          />
         </div>
 
         {/* Autor */}
         <label htmlFor="author-filter">Autor</label>
-        <input type="text" id="author-filter" placeholder="Wpisz autora" value={filters.author} onChange={handleChange} />
+        <input
+          type="text"
+          id="author-filter"
+          placeholder="Wpisz autora"
+          value={filters.author}
+          onChange={handleChange}
+        />
 
         {/* Opis */}
         <label htmlFor="description-filter">Słowo w opisie</label>
-        <input type="text" id="description-filter" placeholder="Wpisz słowo" value={filters.description} onChange={handleChange} />
+        <input
+          type="text"
+          id="description-filter"
+          placeholder="Wpisz słowo"
+          value={filters.description}
+          onChange={handleChange}
+        />
 
         {/* Sortowanie */}
         <div className="filter-group">
@@ -122,11 +166,24 @@ export default function Filters() {
           </select>
         </div>
 
+        {/* Przycisk „MOJE” */}
+        {user && (
+          <div className="filter-group checkbox-wrapper">
+            <input
+              type="checkbox"
+              id="my-books"
+              checked={userOnly}
+              onChange={toggleUserOnly}
+            />
+            <label htmlFor="my-books">Pokaż tylko moje książki</label>
+          </div>
+        )}
+
         {/* Przycisk */}
         <button type="submit" className="filter-btn">
           Zastosuj filtry
         </button>
       </form>
     </aside>
-  );
+  )
 }
