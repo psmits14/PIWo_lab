@@ -102,3 +102,8 @@ npm run dev
 ```
 
 4. Aplikacja będzie dostępna pod adresem: `http://localhost:5173`
+
+
+Lab4 z firebase
+npm run build
+firebase deploy

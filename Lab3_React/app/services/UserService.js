@@ -7,22 +7,22 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
-// 🔐 Rejestracja użytkownika
+// Rejestracja użytkownika
 export const registerWithEmail = (email, password) =>
   createUserWithEmailAndPassword(auth, email, password);
 
-// 🔐 Logowanie użytkownika
+// Logowanie użytkownika
 export const loginWithEmail = (email, password) =>
   signInWithEmailAndPassword(auth, email, password);
 
-// 🔐 Logowanie przez Google
+// Logowanie przez Google
 export const loginWithGoogle = () => signInWithPopup(auth, provider);
 
-// 🚪 Wylogowanie
+// Wylogowanie
 export const logout = () => signOut(auth);
 
-// 👂 Nasłuchiwanie zmian stanu logowania
+// Nasłuchiwanie zmian stanu logowania
 export const onAuthChange = (callback) => onAuthStateChanged(auth, callback);
 
-// ↩️ Eksport auth, jeśli potrzebny
+// ↩Eksport auth, jeśli potrzebny
 export { auth };

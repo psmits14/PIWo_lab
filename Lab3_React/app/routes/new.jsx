@@ -15,7 +15,7 @@ export function meta() {
 
 export default function NewBook() {
   const navigate = useNavigate();
-  const { user } = useBookstore(); // 🔑 Użytkownik zalogowany
+  const { user } = useBookstore(); // Użytkownik zalogowany
   const [formData, setFormData] = useState({
     title: "",
     author: "",

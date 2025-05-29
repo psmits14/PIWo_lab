@@ -33,12 +33,12 @@ const Navbar = () => {
       </div>
 
       <div className="nav-actions">
-        <NavLink to="/new" className="icon-btn" title="Dodaj książkę">
-          <img src="/plus.png" alt="Dodaj książkę" className="icon" />
+        <NavLink to="/new" className="icon-btn" data-cy="add-book-btn" title="Dodaj książkę">
+          <img src="/images/plus.png" alt="Dodaj książkę" className="icon" />
         </NavLink>
 
         <button className="icon-btn" title="Koszyk">
-          <img src="/cart.png" alt="Koszyk" className="icon" />
+          <img src="/images/cart.png" alt="Koszyk" className="icon" />
         </button>
 
         {user ? (
