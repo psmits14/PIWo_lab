@@ -24,5 +24,5 @@ export const logout = () => signOut(auth);
 // Nasłuchiwanie zmian stanu logowania
 export const onAuthChange = (callback) => onAuthStateChanged(auth, callback);
 
-// ↩Eksport auth, jeśli potrzebny
+// Eksport auth, jeśli potrzebny
 export { auth };

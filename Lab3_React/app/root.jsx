@@ -1,16 +1,10 @@
-import {
-  isRouteErrorResponse,
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "react-router";
+import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router"
 
 import Navbar from "./Components/Navbar"
 import Footer from "./Components/Footer"
 import { BookstoreProvider } from "./Contexts/BookstoreContext"
-import "./app.css";
+import "./app.css"
+import { InProgressProvider } from "./Contexts/inProgressContext"
 
 export const links = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -23,7 +17,7 @@ export const links = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
   },
-];
+]
 
 export function Layout({ children }) {
   return (
@@ -35,11 +29,15 @@ export function Layout({ children }) {
         <Links />
       </head>
       <body>
-        <BookstoreProvider>
-          <Navbar /> {/* globalny NavBar */}
-          {children}
-          <Footer />
-        </BookstoreProvider>
+        <div className="app-layout">
+          <InProgressProvider>
+            <BookstoreProvider>
+              <Navbar />
+              <main className="main-content">{children}</main>
+              <Footer />
+            </BookstoreProvider>
+          </InProgressProvider>
+        </div>
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -52,19 +50,16 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }) {
-  let message = "Oops!";
-  let details = "An unexpected error occurred.";
-  let stack;
+  let message = "Oops!"
+  let details = "An unexpected error occurred."
+  let stack
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
-    details =
-      error.status === 404
-        ? "The requested page could not be found."
-        : error.statusText || details;
+    message = error.status === 404 ? "404" : "Error"
+    details = error.status === 404 ? "The requested page could not be found." : error.statusText || details
   } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
-    stack = error.stack;
+    details = error.message
+    stack = error.stack
   }
 
   return (
@@ -77,5 +72,5 @@ export function ErrorBoundary({ error }) {
         </pre>
       )}
     </main>
-  );
+  )
 }

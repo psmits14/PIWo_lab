@@ -1,10 +1,13 @@
 import { useBookstore } from "../Contexts/BookstoreContext";
 import { deleteBook } from "../services/BookService";
 import { useNavigate } from "react-router";
+import InProgressContext from "../Contexts/inProgressContext";
+import React, { useContext } from "react";
 
 export default function Book({ book }) {
   const { user } = useBookstore();
   const navigate = useNavigate();
+  const { dispatch } = useContext(InProgressContext);
 
   const handleDelete = async () => {
     if (!user || user.uid !== book.addedBy) {
@@ -37,6 +40,10 @@ export default function Book({ book }) {
     return text.slice(0, maxLength) + "...";
   };
 
+  const handleAddToInProgress = () => {
+  dispatch({ type: "ADD_ITEM", payload: book });
+  };
+
   return (
     <div className="book">
       <img src={book.image || "/placeholder.svg"} className="book-image" alt={book.title} />
@@ -51,7 +58,11 @@ export default function Book({ book }) {
         <p>{truncateDescription(book.description || "Brak opisu")}</p>
       </div>
       <p className="book-price">{book.price.toFixed(2)} zł</p>
-      <button className="add-to-cart">Dodaj do koszyka</button>
+      
+      <button className="add-to-cart" onClick={handleAddToInProgress}>
+      Dodaj do koszyka
+      </button>
+
 
       {user?.uid === book.addedBy && (
         <div className="book-actions">
