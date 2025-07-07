@@ -87,7 +87,7 @@ W ramach laboratorium 3-5 przeprowadzono migrację projektu "Księgarnia Między
 
 
 ```shellscript
-git clone https://github.com/psmits14/PIWo_lab
+git clone https://github.com/psmits14/PIWo-lab
 cd Lab3_React
 ```
 
