@@ -106,7 +106,7 @@ npm run dev
 4. Aplikacja będzie dostępna pod adresem: `http://localhost:5173`
 
 
-## Konfiguracja i deploy z Firebase:
+### Konfiguracja i deploy z Firebase:
 
 1. Zbuduj aplikację do produkcji:
 
