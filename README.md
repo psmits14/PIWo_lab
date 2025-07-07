@@ -63,7 +63,7 @@ W ramach laboratorium przygotowano prostą aplikację To-Do do zarządzania zada
 
 ## Laboratorium 3, 4, 5 — React
 
-W ramach trzeciego laboratorium przeprowadzono migrację projektu "Księgarnia Między Kartkami" do biblioteki React, znacząco rozbudowując funkcjonalność aplikacji.
+W ramach laboratorium 3-5 przeprowadzono migrację projektu "Księgarnia Między Kartkami" do biblioteki React,  a także dodano obsługę bazy danych i hostingu za pomocą Firebase. Aplikacja została znacząco rozbudowana o nowe funkcjonalności oraz zintegrowana z backendem w chmurze.
 
 ### Funkcjonalności aplikacji:
 
@@ -79,7 +79,7 @@ W ramach trzeciego laboratorium przeprowadzono migrację projektu "Księgarnia M
 - Sortowanie wyników - możliwość sortowania książek według ceny, roku wydania i tytułu
 - Dodawanie nowych książek - formularz umożliwiający dodanie nowej pozycji do katalogu
 - Zakup książek
-- Logowanie przy użyciu adresu email oraz Google
+- Logowanie przy użyciu adresu email oraz Google przy użyciu Firebase
 
 ### Uruchomienie projektu
 
@@ -106,6 +106,20 @@ npm run dev
 4. Aplikacja będzie dostępna pod adresem: `http://localhost:5173`
 
 
-Lab4 z firebase
-npm run build
-firebase deploy
+## Konfiguracja i deploy z Firebase:
+
+1. Zbuduj aplikację do produkcji:
+
+   ```bash
+   npm run build
+   ```
+
+2. Wdróż aplikację na Firebase Hosting:
+
+   ```bash
+   firebase deploy
+   ```
+
+3. Po udanym deployu aplikacja będzie dostępna pod adresem wskazanym przez Firebase.
+
+
