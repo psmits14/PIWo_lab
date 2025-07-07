@@ -61,7 +61,7 @@ W ramach laboratorium przygotowano prostą aplikację To-Do do zarządzania zada
 - Zwijanie i rozwijanie list
 
 
-## Laboratorium 3 — React
+## Laboratorium 3, 4, 5 — React
 
 W ramach trzeciego laboratorium przeprowadzono migrację projektu "Księgarnia Między Kartkami" do biblioteki React, znacząco rozbudowując funkcjonalność aplikacji.
 
@@ -78,6 +78,8 @@ W ramach trzeciego laboratorium przeprowadzono migrację projektu "Księgarnia M
   - Słów kluczowych w opisie
 - Sortowanie wyników - możliwość sortowania książek według ceny, roku wydania i tytułu
 - Dodawanie nowych książek - formularz umożliwiający dodanie nowej pozycji do katalogu
+- Zakup książek
+- Logowanie przy użyciu adresu email oraz Google
 
 ### Uruchomienie projektu
 
